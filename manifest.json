@@ -75,21 +75,5 @@
       "url": "/#gabung"
     }
   ],
-  "prefer_related_applications": false,
-  "screenshots": [
-    {
-      "src": "assets/images/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "GEMPAR Mobile View"
-    },
-    {
-      "src": "assets/images/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "GEMPAR Desktop View"
-    }
-  ]
+  "prefer_related_applications": false
 }
