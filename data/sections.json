@@ -1,0 +1,14 @@
+{
+  "preloader": true,
+  "header": true,
+  "hero": true,
+  "steps": true,
+  "gem": true,
+  "impact": true,
+  "poster": true,
+  "testimonials": true,
+  "cta": true,
+  "faq": true,
+  "footer": true,
+  "fab_block": true
+}
