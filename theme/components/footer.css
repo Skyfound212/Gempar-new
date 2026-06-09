@@ -1,0 +1,119 @@
+/**
+ * FOOTER COMPONENT
+ */
+
+.footer {
+  background: var(--gempar-primary-darker);
+  padding: 60px 20px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.footer-logo span {
+  color: white;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 3px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--gempar-transition);
+}
+
+.footer-links a:hover {
+  color: var(--gempar-accent);
+}
+
+.footer-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gempar-accent);
+  margin: 20px auto;
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.footer-slogan {
+  color: var(--gempar-accent) !important;
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 15px !important;
+  letter-spacing: 1px;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+  transition: var(--gempar-transition);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-social a:hover {
+  background: var(--gempar-primary);
+  transform: translateY(-3px);
+  border-color: transparent;
+}
