@@ -1,141 +1,107 @@
-/**
- * GEMPAR THEME VARIABLES
- * Edit warna, ukuran, spacing di sini
- * 
- * 📍 URL: https://USERNAME.github.io/gempar-config/theme/variables.css
- */
+/* ============================================
+   GEMPAR THEME VARIABLES
+   Update di GitHub untuk ubah tema tanpa deploy ulang
+   ============================================ */
 
 :root {
-  /* ============================================
-     BRAND COLORS
-     ============================================ */
-  --gempar-primary: #2D6A4F;
-  --gempar-primary-dark: #1B4332;
-  --gempar-primary-darker: #081C15;
-  --gempar-primary-light: #40916C;
-  --gempar-primary-soft: #52B788;
-  --gempar-primary-mint: #D8F3DC;
-  --gempar-primary-pale: #E9F5EC;
+  /* Primary Colors */
+  --primary: #2D6A4F;
+  --primary-light: #40916C;
+  --primary-dark: #1B4332;
+  --primary-darker: #081C15;
   
-  --gempar-accent: #D4A574;
-  --gempar-accent-light: #E8C9A0;
-  --gempar-accent-dark: #B8935F;
-  --gempar-accent-glow: rgba(212, 165, 116, 0.4);
+  /* Accent Colors */
+  --accent: #D4A574;
+  --accent-light: #E8C9A0;
+  --accent-dark: #B08968;
   
-  /* ============================================
-     SEMANTIC COLORS
-     ============================================ */
-  --gempar-bg: #F5F7F6;
-  --gempar-card: #FFFFFF;
-  --gempar-text: #1A1A1A;
-  --gempar-text-light: #4A4A4A;
-  --gempar-text-muted: #8A8A8A;
-  --gempar-border: rgba(45, 106, 79, 0.06);
+  /* Background Colors */
+  --bg: #F5F7F6;
+  --bg-white: #FFFFFF;
+  --bg-dark: #1B4332;
+  --bg-card: #FFFFFF;
   
-  /* ============================================
-     SHADOWS
-     ============================================ */
-  --gempar-shadow-sm: 0 2px 8px rgba(45, 106, 79, 0.05);
-  --gempar-shadow: 0 8px 32px rgba(45, 106, 79, 0.08);
-  --gempar-shadow-lg: 0 16px 48px rgba(45, 106, 79, 0.12);
-  --gempar-shadow-xl: 0 24px 64px rgba(45, 106, 79, 0.15);
+  /* Text Colors */
+  --text: #1A1A1A;
+  --text-light: #8A8A8A;
+  --text-white: #FFFFFF;
+  --text-muted: rgba(255,255,255,0.7);
   
-  /* ============================================
-     RADIUS
-     ============================================ */
-  --gempar-radius-sm: 12px;
-  --gempar-radius: 16px;
-  --gempar-radius-lg: 24px;
-  --gempar-radius-xl: 28px;
-  --gempar-radius-full: 9999px;
+  /* Border & Shadow */
+  --border: rgba(45,106,79,0.06);
+  --shadow-sm: 0 4px 12px rgba(45,106,79,0.08);
+  --shadow-md: 0 8px 32px rgba(45,106,79,0.12);
+  --shadow-lg: 0 24px 64px rgba(45,106,79,0.15);
+  --shadow-fab: 0 8px 32px rgba(45,106,79,0.35);
   
-  /* ============================================
-     TRANSITION
-     ============================================ */
-  --gempar-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, #1B4332, #2D6A4F);
+  --gradient-accent: linear-gradient(135deg, #D4A574, #E8C9A0);
+  --gradient-hero: linear-gradient(135deg, #1B4332, #2D6A4F, #40916C);
   
-  /* ============================================
-     FAB BLOCK — Komponen Kustom
-     ============================================ */
-  --fab-block-position-right: 24px;
-  --fab-block-position-bottom: 24px;
-  --fab-block-position-left: auto;
-  --fab-block-position-top: auto;
-  
-  --fab-block-gap: 12px;
-  --fab-block-z-index: 999;
-  
-  /* Tombol Chat (Primary) */
-  --fab-block-chat-bg: var(--gempar-primary);
-  --fab-block-chat-bg-hover: var(--gempar-primary-light);
-  --fab-block-chat-text: #FFFFFF;
-  
-  /* Tombol App (Accent) */
-  --fab-block-app-bg: var(--gempar-accent);
-  --fab-block-app-bg-hover: var(--gempar-accent-light);
-  --fab-block-app-text: var(--gempar-primary-dark);
-  
-  /* Ukuran & Shape */
-  --fab-block-height: 52px;
-  --fab-block-min-width: 180px;
-  --fab-block-padding-x: 24px;
-  --fab-block-radius: var(--gempar-radius-full);
-  --fab-block-font-size: 14px;
-  --fab-block-font-weight: 700;
-  --fab-block-icon-size: 20px;
-  --fab-block-icon-gap: 10px;
-  
-  /* Shadow & Effects */
-  --fab-block-shadow: 0 8px 32px rgba(45, 106, 79, 0.35);
-  --fab-block-shadow-hover: 0 12px 40px rgba(45, 106, 79, 0.45);
-  --fab-block-pulse-color: rgba(255, 255, 255, 0.3);
-  --fab-block-pulse-size: 4px;
-  
-  /* ============================================
-     HEADER
-     ============================================ */
-  --header-height: 64px;
-  --header-height-scrolled: 56px;
-  --header-bg: rgba(255, 255, 255, 0.85);
-  --header-bg-scrolled: rgba(255, 255, 255, 0.95);
-  --header-blur: blur(24px) saturate(180%);
-  
-  /* ============================================
-     HERO
-     ============================================ */
-  --hero-gradient: linear-gradient(
-    160deg, 
-    var(--gempar-primary-darker) 0%, 
-    var(--gempar-primary-dark) 30%, 
-    var(--gempar-primary) 60%, 
-    var(--gempar-primary-light) 100%
-  );
-  
-  /* ============================================
-     SECTION SPACING
-     ============================================ */
-  --section-padding-y: 80px;
-  --section-padding-y-lg: 120px;
-  --container-max-width: 900px;
-  
-  /* ============================================
-     TYPOGRAPHY
-     ============================================ */
-  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', sans-serif;
   --font-size-xs: 11px;
   --font-size-sm: 12px;
   --font-size-base: 14px;
-  --font-size-md: 15px;
-  --font-size-lg: 17px;
-  --font-size-xl: 20px;
-  --font-size-2xl: clamp(26px, 5vw, 36px);
-  --font-size-3xl: clamp(28px, 6vw, 40px);
-  --font-size-hero: clamp(32px, 7vw, 52px);
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
   
-  /* ============================================
-     ANIMATION
-     ============================================ */
-  --animation-float-duration: 5s;
-  --animation-pulse-duration: 2s;
-  --animation-fade-duration: 0.8s;
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --transition-slow: 0.5s cubic-bezier(0.4,0,0.2,1);
+  --transition-bounce: 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+  
+  /* Z-Index */
+  --z-header: 1000;
+  --z-fab: 999;
+  --z-scroll-top: 998;
+  --z-pwa-banner: 998;
+  --z-preloader: 99999;
+  --z-toast: 10000;
 }
+
+/* ============================================
+   HEADER STYLES
+   ============================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 64px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition-base);
+}
+
+.header.scrolled {
+  background: rgba(255,255,255,0
