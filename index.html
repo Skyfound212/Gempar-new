@@ -65,26 +65,120 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
 
 <style>
 /* ============================================
-   CORE CSS (Minimal — sebelum theme load)
+   SPLASH SCREEN KUSTOM
    ============================================ */
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease;
+}
+
+#splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#splash-screen.hidden {
+  display: none;
+}
+
+/* Phase 1: Logo Center */
+.splash-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80vw;
+  max-height: 40vh;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.splash-logo.show {
+  opacity: 1;
+}
+
+/* Phase 2: Background Cover */
+.splash-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.splash-bg.show {
+  opacity: 1;
+}
+
+/* Loading Indicator */
+.splash-loader {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 80vw);
+  height: 100px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.splash-loader.show {
+  opacity: 1;
+}
+
+.splash-loader-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.splash-loader-fill {
+  height: 100%;
+  width: 0%;
+  background: #FFD700;
+  border-radius: 4px;
+  animation: loader-fill 3s ease-in-out forwards;
+  box-shadow: 0 0 20px rgba(255,215,0,0.5);
+}
+
+@keyframes loader-fill {
+  0% { width: 0%; }
+  30% { width: 40%; }
+  60% { width: 75%; }
+  85% { width: 95%; }
+  100% { width: 100%; }
+}
+
+.splash-loader-text {
+  color: #FFD700;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
 
 /* ============================================
-   PRELOADER
+   CORE CSS (Minimal — sebelum theme load)
    ============================================ */
-#preloader { position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 100px; transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), visibility 0.8s, transform 0.8s; background: #1B4332 center center / cover no-repeat; }
-#preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(1.05); }
-#preloader::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); pointer-events: none; z-index: 1; }
-.preloader-content { position: relative; z-index: 2; width: 300px; max-width: 85vw; text-align: center; }
-.preloader-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
-.preloader-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #D4A574, #E8C9A0, #D4A574); background-size: 200% 100%; border-radius: 4px; animation: bar-fill 2.5s ease-in-out forwards, bar-shine 1.5s linear infinite; box-shadow: 0 0 12px rgba(212,165,116,0.5); }
-@keyframes bar-fill { 0% { width: 0%; } 30% { width: 50%; } 60% { width: 80%; } 85% { width: 95%; } 100% { width: 100%; } }
-@keyframes bar-shine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-.preloader-text { color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.5); animation: text-pulse 1.5s ease-in-out infinite; }
-@keyframes text-pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-.preloader-skip { position: absolute; top: 24px; right: 24px; z-index: 2; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; opacity: 0; transform: translateY(-10px); transition: all 0.3s ease; pointer-events: none; }
-.preloader-skip.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-.preloader-skip:hover { background: rgba(255,255,255,0.3); }
-.preloader-version { position: absolute; top: 24px; left: 24px; z-index: 2; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
 
 /* ============================================
    PLACEHOLDER MASCOT (CSS-only)
@@ -186,23 +280,28 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
 <body>
 
 <!-- ============================================
-     PRELOADER
+     SPLASH SCREEN KUSTOM
      ============================================ -->
-<div id="preloader">
-  <div class="preloader-version" id="preloaderVersion">v3.0</div>
-  <button class="preloader-skip" id="preloaderSkip" onclick="skipPreloader()">Lewati →</button>
-  <div class="preloader-content">
-    <div class="preloader-bar">
-      <div class="preloader-bar-fill"></div>
+<div id="splash-screen">
+  <!-- Phase 1: Logo -->
+  <img src="assets/images/logo-splash.png" alt="Digi-Warakas" class="splash-logo" id="splashLogo">
+  
+  <!-- Phase 2: Background -->
+  <img src="assets/images/bg-splash.png" alt="GEMPAR" class="splash-bg" id="splashBg">
+  
+  <!-- Loading Indicator -->
+  <div class="splash-loader" id="splashLoader">
+    <div class="splash-loader-track">
+      <div class="splash-loader-fill"></div>
     </div>
-    <div class="preloader-text" id="preloaderText">Memuat aplikasi...</div>
+    <div class="splash-loader-text">Memuat aplikasi...</div>
   </div>
 </div>
 
 <!-- ============================================
      HEADER
      ============================================ -->
-<<header class="header" id="header">
+<header class="header" id="header">
   <a href="#" class="header-logo" id="headerLogo">
     <span style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:24px;">🌿</span>
     <span id="headerLogoText">GEMPAR</span>
@@ -222,7 +321,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
   </button>
 </header>
 
-<<nav class="mobile-nav" id="mobileNav">
+<nav class="mobile-nav" id="mobileNav">
   <a href="#cara-kerja" onclick="closeMobileMenu()">Cara Kerja</a>
   <a href="#gem" onclick="closeMobileMenu()">Koin GEM</a>
   <a href="#dampak" onclick="closeMobileMenu()">Dampak</a>
@@ -523,7 +622,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
 <!-- ============================================
      FOOTER
      ============================================ -->
-<<footer class="footer">
+<footer class="footer">
   <div class="footer-content">
     <div class="footer-logo">
       <span style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:28px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));">🌿</span>
@@ -584,6 +683,37 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
 <script>
 (function() {
   'use strict';
+  
+  // ============================================
+  // SPLASH SCREEN SEQUENCE
+  // ============================================
+  function initSplashScreen() {
+    const splash = document.getElementById('splash-screen');
+    const logo = document.getElementById('splashLogo');
+    const bg = document.getElementById('splashBg');
+    const loader = document.getElementById('splashLoader');
+    
+    // Phase 1: Fade in logo (0-2 detik)
+    setTimeout(() => {
+      logo.classList.add('show');
+    }, 100);
+    
+    // Phase 2: Background cover + loader (2-5 detik)
+    setTimeout(() => {
+      bg.classList.add('show');
+      loader.classList.add('show');
+    }, 2000);
+    
+    // Phase 3: Fade out splash, show main content (5 detik)
+    setTimeout(() => {
+      splash.classList.add('fade-out');
+      setTimeout(() => {
+        splash.classList.add('hidden');
+        // Trigger preloader/config init setelah splash selesai
+        initApp();
+      }, 800);
+    }, 5000);
+  }
   
   // ============================================
   // CONFIG SOURCES — Skyfound212 / Gempar-new
@@ -678,24 +808,6 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
   }
   
   // ============================================
-  // RENDER PRELOADER
-  // ============================================
-  function renderPreloader(config) {
-    const p = config?.preloader;
-    if (!p) return;
-    
-    const preloader = document.getElementById('preloader');
-    const text = document.getElementById('preloaderText');
-    const version = document.getElementById('preloaderVersion');
-    
-    if (p.image && !p.image.includes('Skyfound212')) {
-      preloader.style.background = `url("${p.image}") center center / cover no-repeat`;
-    }
-    if (text) text.textContent = p.loading_text || 'Memuat...';
-    if (version) version.textContent = p.version_text || '';
-  }
-  
-  // ============================================
   // RENDER HEADER
   // ============================================
   function renderHeader(config) {
@@ -785,7 +897,6 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
   function init(config) {
     console.log('[GEMPAR] Config loaded:', config.version || 'unknown');
     
-    renderPreloader(config);
     renderHeader(config);
     renderHero(config);
     renderSections(config);
@@ -794,39 +905,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
     renderFooter(config);
     
     initInteractions();
-    initPreloader(config);
   }
-  
-  // ============================================
-  // PRELOADER LOGIC
-  // ============================================
-  function initPreloader(config) {
-    const p = config?.preloader;
-    if (!p || !p.enabled) {
-      skipPreloader();
-      return;
-    }
-    
-    const duration = p.duration_ms || 3000;
-    const showSkip = p.show_skip_after_ms || 3000;
-    
-    setTimeout(() => {
-      const skip = document.getElementById('preloaderSkip');
-      if (skip) skip.classList.add('visible');
-    }, showSkip);
-    
-    setTimeout(() => {
-      skipPreloader();
-    }, duration);
-  }
-  
-  window.skipPreloader = function() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      preloader.classList.add('hidden');
-      setTimeout(() => preloader.remove(), 800);
-    }
-  };
   
   // ============================================
   // INTERACTIONS
@@ -1007,11 +1086,17 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); colo
   }
   
   // ============================================
-  // START
+  // INIT APP (called after splash screen)
   // ============================================
-  loadConfig();
+  function initApp() {
+    loadConfig();
+    console.log('%c🌿 GEMPAR Cloudflare', 'font-size:20px;font-weight:800;color:#2D6A4F;');
+  }
   
-  console.log('%c🌿 GEMPAR Cloudflare', 'font-size:20px;font-weight:800;color:#2D6A4F;');
+  // ============================================
+  // START SPLASH SCREEN
+  // ============================================
+  initSplashScreen();
   
 })();
 </script>
