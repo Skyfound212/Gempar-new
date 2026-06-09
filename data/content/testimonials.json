@@ -1,0 +1,29 @@
+{
+  "enabled": true,
+  "title": "Apa Kata Mereka?",
+  "subtitle": "Pengalaman nyata dari anggota GEMPAR",
+  "tag": "💬 Testimoni",
+  "items": [
+    {
+      "text": "GEMPAR mengubah cara pandang saya tentang sampah. Sekarang memilah jadi kebiasaan sehari-hari dan saya dapat reward juga!",
+      "avatar": "👩",
+      "name": "Sari Dewi",
+      "role": "Ibu Rumah Tangga, Jakarta",
+      "stars": 5
+    },
+    {
+      "text": "Anak-anak jadi lebih aware soal lingkungan berkat GEMPAR. Seru banget bisa belajar sambil dapat koin GEM!",
+      "avatar": "👨",
+      "name": "Budi Santoso",
+      "role": "Guru SD, Bandung",
+      "stars": 5
+    },
+    {
+      "text": "Drop point dekat rumah, prosesnya cepat, dan aplikasinya user-friendly. GEMPAR benar-benar solusi sampah modern!",
+      "avatar": "👩‍💼",
+      "name": "Rina Kusuma",
+      "role": "Mahasiswa, Surabaya",
+      "stars": 5
+    }
+  ]
+}
