@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "title": "Dampak Positif Kita",
+  "subtitle": "Setiap setoran sampah berarti satu langkah untuk bumi yang lebih baik",
+  "tag": "🌍 Dampak",
+  "items": [
+    { "icon": "🌳", "number": 2500, "suffix": "+", "label": "Pohon Terselamatkan" },
+    { "icon": "💧", "number": 10000, "suffix": "+", "label": "Liter Air Terjaga" },
+    { "icon": "⚡", "number": 5000, "suffix": "+", "label": "kWh Energi Hemat" },
+    { "icon": "👥", "number": 15000, "suffix": "+", "label": "Masyarakat Terlibat" }
+  ]
+}
