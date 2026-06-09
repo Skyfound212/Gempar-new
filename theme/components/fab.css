@@ -1,0 +1,110 @@
+/**
+ * FAB BLOCK COMPONENT
+ * Tombol balok kanan bawah
+ */
+
+.fab-block-container {
+  position: fixed;
+  z-index: var(--fab-block-z-index, 999);
+  display: flex;
+  flex-direction: column;
+  gap: var(--fab-block-gap, 12px);
+}
+
+.fab-block-container[data-position="right-bottom"] {
+  right: var(--fab-block-position-right, 24px);
+  bottom: var(--fab-block-position-bottom, 24px);
+  left: var(--fab-block-position-left, auto);
+  top: var(--fab-block-position-top, auto);
+}
+
+.fab-block-container[data-position="left-bottom"] {
+  right: auto;
+  bottom: var(--fab-block-position-bottom, 24px);
+  left: var(--fab-block-position-right, 24px);
+  top: auto;
+}
+
+.fab-block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fab-block-icon-gap, 10px);
+  height: var(--fab-block-height, 52px);
+  min-width: var(--fab-block-min-width, 180px);
+  padding: 0 var(--fab-block-padding-x, 24px);
+  border-radius: var(--fab-block-radius, 9999px);
+  color: var(--fab-block-chat-text, #fff);
+  font-family: var(--font-family);
+  font-size: var(--fab-block-font-size, 14px);
+  font-weight: var(--fab-block-font-weight, 700);
+  text-decoration: none;
+  box-shadow: var(--fab-block-shadow);
+  transition: var(--gempar-transition);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fab-block--primary {
+  background: var(--fab-block-chat-bg);
+  color: var(--fab-block-chat-text);
+}
+
+.fab-block--accent {
+  background: var(--fab-block-app-bg);
+  color: var(--fab-block-app-text);
+}
+
+.fab-block:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--fab-block-shadow-hover);
+}
+
+.fab-block--primary:hover {
+  background: var(--fab-block-chat-bg-hover);
+}
+
+.fab-block--accent:hover {
+  background: var(--fab-block-app-bg-hover);
+}
+
+.fab-block__icon {
+  font-size: var(--fab-block-icon-size, 20px);
+  line-height: 1;
+}
+
+.fab-block__label {
+  line-height: 1;
+}
+
+.fab-block__pulse {
+  position: absolute;
+  inset: calc(-1 * var(--fab-block-pulse-size, 4px));
+  border-radius: inherit;
+  border: 2px solid var(--fab-block-pulse-color);
+  animation: fab-pulse 2s ease-out infinite;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.fab-block[data-pulse="true"] .fab-block__pulse {
+  opacity: 1;
+}
+
+@keyframes fab-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+@media (max-width: 400px) {
+  .fab-block {
+    min-width: 160px;
+    padding: 0 18px;
+    height: 48px;
+    font-size: 13px;
+  }
+  .fab-block__icon {
+    font-size: 18px;
+  }
+}
