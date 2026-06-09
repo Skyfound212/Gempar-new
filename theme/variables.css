@@ -1,0 +1,141 @@
+/**
+ * GEMPAR THEME VARIABLES
+ * Edit warna, ukuran, spacing di sini
+ * 
+ * 📍 URL: https://USERNAME.github.io/gempar-config/theme/variables.css
+ */
+
+:root {
+  /* ============================================
+     BRAND COLORS
+     ============================================ */
+  --gempar-primary: #2D6A4F;
+  --gempar-primary-dark: #1B4332;
+  --gempar-primary-darker: #081C15;
+  --gempar-primary-light: #40916C;
+  --gempar-primary-soft: #52B788;
+  --gempar-primary-mint: #D8F3DC;
+  --gempar-primary-pale: #E9F5EC;
+  
+  --gempar-accent: #D4A574;
+  --gempar-accent-light: #E8C9A0;
+  --gempar-accent-dark: #B8935F;
+  --gempar-accent-glow: rgba(212, 165, 116, 0.4);
+  
+  /* ============================================
+     SEMANTIC COLORS
+     ============================================ */
+  --gempar-bg: #F5F7F6;
+  --gempar-card: #FFFFFF;
+  --gempar-text: #1A1A1A;
+  --gempar-text-light: #4A4A4A;
+  --gempar-text-muted: #8A8A8A;
+  --gempar-border: rgba(45, 106, 79, 0.06);
+  
+  /* ============================================
+     SHADOWS
+     ============================================ */
+  --gempar-shadow-sm: 0 2px 8px rgba(45, 106, 79, 0.05);
+  --gempar-shadow: 0 8px 32px rgba(45, 106, 79, 0.08);
+  --gempar-shadow-lg: 0 16px 48px rgba(45, 106, 79, 0.12);
+  --gempar-shadow-xl: 0 24px 64px rgba(45, 106, 79, 0.15);
+  
+  /* ============================================
+     RADIUS
+     ============================================ */
+  --gempar-radius-sm: 12px;
+  --gempar-radius: 16px;
+  --gempar-radius-lg: 24px;
+  --gempar-radius-xl: 28px;
+  --gempar-radius-full: 9999px;
+  
+  /* ============================================
+     TRANSITION
+     ============================================ */
+  --gempar-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ============================================
+     FAB BLOCK — Komponen Kustom
+     ============================================ */
+  --fab-block-position-right: 24px;
+  --fab-block-position-bottom: 24px;
+  --fab-block-position-left: auto;
+  --fab-block-position-top: auto;
+  
+  --fab-block-gap: 12px;
+  --fab-block-z-index: 999;
+  
+  /* Tombol Chat (Primary) */
+  --fab-block-chat-bg: var(--gempar-primary);
+  --fab-block-chat-bg-hover: var(--gempar-primary-light);
+  --fab-block-chat-text: #FFFFFF;
+  
+  /* Tombol App (Accent) */
+  --fab-block-app-bg: var(--gempar-accent);
+  --fab-block-app-bg-hover: var(--gempar-accent-light);
+  --fab-block-app-text: var(--gempar-primary-dark);
+  
+  /* Ukuran & Shape */
+  --fab-block-height: 52px;
+  --fab-block-min-width: 180px;
+  --fab-block-padding-x: 24px;
+  --fab-block-radius: var(--gempar-radius-full);
+  --fab-block-font-size: 14px;
+  --fab-block-font-weight: 700;
+  --fab-block-icon-size: 20px;
+  --fab-block-icon-gap: 10px;
+  
+  /* Shadow & Effects */
+  --fab-block-shadow: 0 8px 32px rgba(45, 106, 79, 0.35);
+  --fab-block-shadow-hover: 0 12px 40px rgba(45, 106, 79, 0.45);
+  --fab-block-pulse-color: rgba(255, 255, 255, 0.3);
+  --fab-block-pulse-size: 4px;
+  
+  /* ============================================
+     HEADER
+     ============================================ */
+  --header-height: 64px;
+  --header-height-scrolled: 56px;
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --header-bg-scrolled: rgba(255, 255, 255, 0.95);
+  --header-blur: blur(24px) saturate(180%);
+  
+  /* ============================================
+     HERO
+     ============================================ */
+  --hero-gradient: linear-gradient(
+    160deg, 
+    var(--gempar-primary-darker) 0%, 
+    var(--gempar-primary-dark) 30%, 
+    var(--gempar-primary) 60%, 
+    var(--gempar-primary-light) 100%
+  );
+  
+  /* ============================================
+     SECTION SPACING
+     ============================================ */
+  --section-padding-y: 80px;
+  --section-padding-y-lg: 120px;
+  --container-max-width: 900px;
+  
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 17px;
+  --font-size-xl: 20px;
+  --font-size-2xl: clamp(26px, 5vw, 36px);
+  --font-size-3xl: clamp(28px, 6vw, 40px);
+  --font-size-hero: clamp(32px, 7vw, 52px);
+  
+  /* ============================================
+     ANIMATION
+     ============================================ */
+  --animation-float-duration: 5s;
+  --animation-pulse-duration: 2s;
+  --animation-fade-duration: 0.8s;
+}
