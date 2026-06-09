@@ -1,0 +1,124 @@
+/**
+ * TESTIMONIALS COMPONENT
+ */
+
+.testimonials-section {
+  padding: var(--section-padding-y, 80px) 20px;
+  background: var(--gempar-card);
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.testimonials-header .section-tag {
+  display: inline-block;
+  background: var(--gempar-primary-pale);
+  color: var(--gempar-primary);
+  padding: 6px 16px;
+  border-radius: var(--gempar-radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.testimonials-header h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 900;
+  color: var(--gempar-primary-dark);
+  margin-bottom: 8px;
+}
+
+.testimonials-header p {
+  color: var(--gempar-text-muted);
+  font-size: 15px;
+}
+
+.testimonials-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.testimonial-card {
+  background: var(--gempar-bg);
+  border-radius: var(--gempar-radius-xl);
+  padding: 28px;
+  border: 1px solid var(--gempar-border);
+  transition: var(--gempar-transition);
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 60px;
+  color: var(--gempar-primary-mint);
+  font-family: Georgia, serif;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--gempar-shadow);
+}
+
+.testimonial-text {
+  font-size: 14px;
+  color: var(--gempar-text-light);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gempar-primary) 0%, var(--gempar-primary-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.testimonial-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gempar-primary-dark);
+}
+
+.testimonial-info span {
+  font-size: 12px;
+  color: var(--gempar-text-muted);
+}
+
+.testimonial-stars {
+  color: var(--gempar-accent);
+  font-size: 14px;
+  margin-top: 4px;
+  letter-spacing: 2px;
+}
+
+@media (min-width: 768px) {
+  .testimonials-section {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
