@@ -1,0 +1,9 @@
+# GEMPAR Cloudflare Pages Redirects
+# SPA fallback for admin and bank sub-routes
+
+/admingempar/* /admingempar/index.html 200
+/bank/* /bank/index.html 200
+
+# Legacy redirects (optional)
+/saku / 301
+/admin /admingempar/ 301
