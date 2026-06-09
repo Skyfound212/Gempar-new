@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "mascot_image": "https://USERNAME.github.io/gempar-config/assets/images/mascot-reward.png",
+  "mascot_fallback_emoji": "🎉",
+  "title": "Siap Bergabung?",
+  "subtitle": "Jadilah bagian dari gerakan memilah sampah dari rumah. Bersama-sama kita bisa menciptakan lingkungan yang lebih bersih dan berkelanjutan untuk generasi mendatang.",
+  "button": {
+    "href": "https://gemparwarakas-v2.base44.app/openformdaftar",
+    "label": "🌟 Gabung Sekarang",
+    "target": "_blank"
+  }
+}
