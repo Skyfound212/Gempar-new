@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "title": "Cara Kerja GEMPAR",
+  "subtitle": "4 langkah mudah untuk memilah sampah dan mendapatkan reward",
+  "tag": "📋 Panduan",
+  "items": [
+    {
+      "number": 1,
+      "title": "Pilah Sampah",
+      "desc": "Pilah sampah sesuai jenisnya dari rumahmu. Organik, anorganik, dan residu dipisahkan dengan rapi.",
+      "icon": "♻️"
+    },
+    {
+      "number": 2,
+      "title": "Bawa ke Drop Point",
+      "desc": "Bawa sampah yang sudah dipilah ke drop point terdekat di wilayahmu. Cari lokasi via aplikasi.",
+      "icon": "📍"
+    },
+    {
+      "number": 3,
+      "title": "Tunjukkan QR",
+      "desc": "Tunjukkan QR Setor ke Petugas Drop Point (PDP). Scan cepat, tidak perlu antri lama.",
+      "icon": "📱"
+    },
+    {
+      "number": 4,
+      "title": "Dapatkan GEM",
+      "desc": "Koin GEM otomatis masuk ke saldomu! Tukarkan dengan reward menarik kapan saja.",
+      "icon": "💎"
+    }
+  ]
+}
