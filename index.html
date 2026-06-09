@@ -1,473 +1,1008 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#166534">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>GEMPAR - Gerakan Pilah Sampah Di Warakas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-  /* ===== DUAL FAB FLOATING BUTTONS ===== */
-  .fab-container {
-    position: fixed;
-    bottom: 90px;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    pointer-events: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    max-width: 480px;
-    margin: 0 auto;
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1B5E20">
+<meta name="description" content="GEMPAR - Gerakan Memilah Sampah Dari Rumah. Pilah sampah, dapat GEM, banyak manfaat!">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GEMPAR">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="GEMPAR">
+<meta name="msapplication-TileColor" content="#1B5E20">
+<meta name="format-detection" content="telephone=no">
 
-  .fab-btn {
-    pointer-events: all;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 
-      0 4px 15px rgba(0,0,0,0.25),
-      0 8px 25px rgba(0,0,0,0.15),
-      inset 0 -3px 0 rgba(0,0,0,0.1);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    text-decoration: none;
-  }
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gempar.id">
+<meta property="og:site_name" content="GEMPAR">
+<meta property="og:title" content="GEMPAR - Gerakan Memilah Sampah Dari Rumah">
+<meta property="og:description" content="Gabung GEMPAR sekarang! Pilah sampah dari rumah, bawa ke Drop Point, tunjukkan QR ke PDP, dan koin GEM otomatis masuk ke saldo.">
+<meta property="og:image" content="https://Skyfound212.github.io/Gempar-new/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="id_ID">
 
-  .fab-btn:hover {
-    transform: translateY(-4px) scale(1.08);
-    box-shadow: 
-      0 8px 25px rgba(0,0,0,0.3),
-      0 12px 35px rgba(0,0,0,0.2),
-      inset 0 -3px 0 rgba(0,0,0,0.1);
-  }
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://gempar.id">
+<meta property="twitter:title" content="GEMPAR - Gerakan Memilah Sampah Dari Rumah">
+<meta property="twitter:description" content="Gabung GEMPAR sekarang! Pilah sampah dari rumah, bawa ke Drop Point, tunjukkan QR ke PDP, dan koin GEM otomatis masuk ke saldo.">
+<meta property="twitter:image" content="https://Skyfound212.github.io/Gempar-new/assets/images/og-image.png">
 
-  .fab-btn:active {
-    transform: translateY(-1px) scale(0.95);
-    box-shadow: 
-      0 2px 8px rgba(0,0,0,0.2),
-      inset 0 -1px 0 rgba(0,0,0,0.1);
-  }
+<title>GEMPAR - Gerakan Memilah Sampah Dari Rumah</title>
 
-  /* Left FAB - Chat Si Gempar */
-  .fab-left {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-    color: white;
-    animation: fabFloatLeft 3s ease-in-out infinite;
-  }
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232D6A4F' width='100' height='100' rx='20'/><text x='50' y='65' text-anchor='middle' font-size='55'>🌿</text></svg>">
 
-  .fab-left::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #F59E0B, #D97706);
-    opacity: 0.4;
-    z-index: -1;
-    animation: fabPulse 2s ease-in-out infinite;
-  }
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://Skyfound212.github.io">
 
-  /* Right FAB - Aplikasi Gempar */
-  .fab-right {
-    background: linear-gradient(135deg, #166534 0%, #15803D 100%);
-    color: white;
-    animation: fabFloatRight 3s ease-in-out infinite 0.5s;
-  }
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  .fab-right::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #166534, #15803D);
-    opacity: 0.4;
-    z-index: -1;
-    animation: fabPulse 2s ease-in-out infinite 0.5s;
-  }
+<!-- Theme CSS dari GitHub Pages -->
+<link rel="stylesheet" href="https://Skyfound212.github.io/Gempar-new/theme/variables.css" id="themeVariables">
 
-  /* FAB Label */
-  .fab-label {
-    position: absolute;
-    bottom: -28px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    font-size: 11px;
-    font-weight: 700;
-    color: #1F2937;
-    background: rgba(255,255,255,0.95);
-    padding: 4px 10px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    pointer-events: none;
-    opacity: 0.9;
-    letter-spacing: 0.3px;
-  }
+<style>
+/* ============================================
+   CORE CSS (Minimal — sebelum theme load)
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F5F7F6; color: #1A1A1A; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-  /* Animations */
-  @keyframes fabFloatLeft {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
+/* ============================================
+   PRELOADER
+   ============================================ */
+#preloader { position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 100px; transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), visibility 0.8s, transform 0.8s; background: #1B4332 center center / cover no-repeat; }
+#preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(1.05); }
+#preloader::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); pointer-events: none; z-index: 1; }
+.preloader-content { position: relative; z-index: 2; width: 300px; max-width: 85vw; text-align: center; }
+.preloader-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
+.preloader-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #D4A574, #E8C9A0, #D4A574); background-size: 200% 100%; border-radius: 4px; animation: bar-fill 2.5s ease-in-out forwards, bar-shine 1.5s linear infinite; box-shadow: 0 0 12px rgba(212,165,116,0.5); }
+@keyframes bar-fill { 0% { width: 0%; } 30% { width: 50%; } 60% { width: 80%; } 85% { width: 95%; } 100% { width: 100%; } }
+@keyframes bar-shine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.preloader-text { color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 2px 8px rgba(0,0,0,0.5); animation: text-pulse 1.5s ease-in-out infinite; }
+@keyframes text-pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+.preloader-skip { position: absolute; top: 24px; right: 24px; z-index: 2; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; opacity: 0; transform: translateY(-10px); transition: all 0.3s ease; pointer-events: none; }
+.preloader-skip.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.preloader-skip:hover { background: rgba(255,255,255,0.3); }
+.preloader-version { position: absolute; top: 24px; left: 24px; z-index: 2; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
 
-  @keyframes fabFloatRight {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
+/* ============================================
+   PLACEHOLDER MASCOT (CSS-only)
+   ============================================ */
+.mascot-placeholder { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 120px; filter: drop-shadow(0 16px 40px rgba(0,0,0,0.3)); animation: float 5s ease-in-out infinite; }
+.mascot-placeholder.cta { width: 160px; height: 160px; font-size: 100px; }
 
-  @keyframes fabPulse {
-    0%, 100% { transform: scale(1); opacity: 0.4; }
-    50% { transform: scale(1.15); opacity: 0.2; }
-  }
+/* ============================================
+   PLACEHOLDER POSTER
+   ============================================ */
+.poster-placeholder { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #1B4332, #2D6A4F); border-radius: 28px; color: white; }
+.poster-placeholder .icon { font-size: 60px; margin-bottom: 16px; }
 
-  @keyframes fabBounceIn {
-    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-    60% { transform: scale(1.1) rotate(10deg); opacity: 1; }
-    80% { transform: scale(0.95) rotate(-5deg); }
-    100% { transform: scale(1) rotate(0deg); }
-  }
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(2deg); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(212,165,116,0.4); } 50% { box-shadow: 0 0 40px rgba(212,165,116,0.4), 0 0 60px rgba(212,165,116,0.2); } }
+@keyframes blob { 0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; } 50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; } }
+@keyframes scroll-wheel { 0% { top: 6px; opacity: 1; } 100% { top: 18px; opacity: 0; } }
+@keyframes fab-pulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.15); opacity: 0; } }
 
-  .fab-btn.animate-in {
-    animation: fabBounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  }
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+.animate-on-scroll { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
 
-  /* Notification dot on FAB */
-  .fab-badge {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 18px;
-    height: 18px;
-    background: #EF4444;
-    color: white;
-    font-size: 10px;
-    font-weight: 700;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid white;
-    animation: badgePulse 2s ease-in-out infinite;
-  }
+/* ============================================
+   FAB BLOCK COMPONENT (Inline — critical)
+   ============================================ */
+.fab-block-container { position: fixed; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
+.fab-block-container[data-position="right-bottom"] { right: 24px; bottom: 24px; }
+.fab-block { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 52px; min-width: 180px; padding: 0 24px; border-radius: 9999px; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 8px 32px rgba(45,106,79,0.35); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; white-space: nowrap; }
+.fab-block--primary { background: #2D6A4F; color: #fff; }
+.fab-block--accent { background: #D4A574; color: #1B4332; }
+.fab-block:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(45,106,79,0.45); }
+.fab-block--primary:hover { background: #40916C; }
+.fab-block--accent:hover { background: #E8C9A0; }
+.fab-block__icon { font-size: 20px; line-height: 1; }
+.fab-block__label { line-height: 1; }
+.fab-block__pulse { position: absolute; inset: -4px; border-radius: inherit; border: 2px solid rgba(255,255,255,0.3); animation: fab-pulse 2s ease-out infinite; pointer-events: none; opacity: 0; }
+.fab-block[data-pulse="true"] .fab-block__pulse { opacity: 1; }
 
-  @keyframes badgePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
+@media (max-width: 400px) {
+  .fab-block { min-width: 160px; padding: 0 18px; height: 48px; font-size: 13px; }
+  .fab-block__icon { font-size: 18px; }
+}
 
-  /* Ripple effect on click */
-  .fab-ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.4);
-    transform: scale(0);
-    animation: rippleEffect 0.6s ease-out;
-    pointer-events: none;
-  }
+/* ============================================
+   SCROLL TO TOP
+   ============================================ */
+.scroll-top { position: fixed; bottom: 28px; left: 24px; width: 48px; height: 48px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(45,106,79,0.12); border: 1px solid rgba(45,106,79,0.06); cursor: pointer; z-index: 998; opacity: 0; transform: translateY(20px); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); font-size: 18px; color: #2D6A4F; }
+.scroll-top.visible { opacity: 1; transform: translateY(0); }
+.scroll-top:hover { background: #2D6A4F; color: #fff; transform: translateY(-3px); }
 
-  @keyframes rippleEffect {
-    to { transform: scale(4); opacity: 0; }
-  }
+/* ============================================
+   TOAST
+   ============================================ */
+.toast { position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%) translateY(100px); background: #1B4332; color: white; padding: 14px 28px; border-radius: 16px; font-size: 14px; font-weight: 600; box-shadow: 0 24px 64px rgba(45,106,79,0.15); z-index: 10000; opacity: 0; transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55); display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast-icon { font-size: 18px; }
 
+/* ============================================
+   PWA BANNER
+   ============================================ */
+.pwa-banner { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(120%); background: #fff; border-radius: 28px; padding: 16px 20px; box-shadow: 0 24px 64px rgba(45,106,79,0.15); border: 1px solid rgba(45,106,79,0.06); display: flex; align-items: center; gap: 16px; z-index: 998; max-width: 90%; width: 380px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.pwa-banner.show { transform: translateX(-50%) translateY(0); }
+.pwa-banner-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #2D6A4F, #40916C); display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.pwa-banner-text { flex: 1; }
+.pwa-banner-text h4 { font-size: 14px; font-weight: 800; color: #1B4332; }
+.pwa-banner-text p { font-size: 12px; color: #8A8A8A; }
+.pwa-banner-btn { background: #2D6A4F; color: white; border: none; padding: 8px 16px; border-radius: 16px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+.pwa-banner-btn:hover { background: #1B4332; }
+.pwa-banner-close { background: none; border: none; font-size: 20px; color: #8A8A8A; cursor: pointer; padding: 4px; line-height: 1; }
 
-
-    100% { opacity: 0; transform: scale(1.05); visibility: hidden; }
-  }
-
-  /* ===== SPLASH SCREEN - FULL SCREEN IMAGE ===== */
-  .splash {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    background: #166534;
-  }
-
-  .splash-bg {
-    position: absolute;
-    inset: 0;
-    background: url('assets/bg-splash.png') center center / cover no-repeat;
-    z-index: 1;
-  }
-
-  .splash-progress-area {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 6vh;  /* Positioned just below GEMPAR text */
-  }
-
-  .splash-progress-container {
-    width: 75%;
-    max-width: 400px;
-    height: 5px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    backdrop-filter: blur(4px);
-  }
-
-  .splash-progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #22C55E, #86EFAC, #22C55E);
-    background-size: 200% 100%;
-    border-radius: 10px;
-    animation: 
-      splashProgress 4s ease-in-out forwards,
-      splashShimmer 1.5s ease-in-out infinite;
-  }
-
-  .splash.fade-out {
-    animation: splashFadeOut 0.6s ease forwards;
-  }
-
-  @keyframes splashProgress {
-    0% { width: 0%; }
-    20% { width: 30%; }
-    50% { width: 60%; }
-    80% { width: 85%; }
-    100% { width: 100%; }
-  }
-
-  @keyframes splashShimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-
-  @keyframes splashFadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
-  }
-
-  </style>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 400px) {
+  .hero-title h1 { font-size: 28px; }
+  .fab-block { min-width: 160px; padding: 0 18px; height: 48px; font-size: 13px; }
+}
+@media (min-width: 768px) {
+  .header { padding: 0 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+</style>
 </head>
+
 <body>
-  <!-- Splash Screen -->
-  <div id="splash" class="splash">
-    <div class="splash-bg"></div>
-    <div class="splash-progress-area">
-      <div class="splash-progress-container">
-        <div class="splash-progress-bar" id="splash-progress"></div>
-      </div>
+
+<!-- ============================================
+     PRELOADER
+     ============================================ -->
+<div id="preloader">
+  <div class="preloader-version" id="preloaderVersion">v3.0</div>
+  <button class="preloader-skip" id="preloaderSkip" onclick="skipPreloader()">Lewati →</button>
+  <div class="preloader-content">
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill"></div>
     </div>
+    <div class="preloader-text" id="preloaderText">Memuat aplikasi...</div>
   </div>
+</div>
 
+<!-- ============================================
+     HEADER
+     ============================================ -->
+<<header class="header" id="header">
+  <a href="#" class="header-logo" id="headerLogo">
+    <span style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:24px;">🌿</span>
+    <span id="headerLogoText">GEMPAR</span>
+  </a>
 
-  <!-- GEM-ID Gate -->
-  <div id="gate" class="gate" style="display:none;">
-    <img src="assets/logo.png" alt="GEMPAR" class="gate-logo">
-    <div class="gate-title">🔐 Masukkan GEM-ID Anda</div>
-    <form class="gate-form" onsubmit="return handleGate(event)">
-      <input type="text" id="gemid-input" class="input" placeholder="Contoh: GEM-2026-00101-JM01-0002" 
-             style="text-align:center; font-family:monospace; font-size:15px;" maxlength="30">
-      <button type="submit" class="btn btn-primary" style="margin-top:16px;">BUKA SAKU SAYA</button>
-      <label class="gate-remember">
-        <input type="checkbox" id="remember-gemid" checked>
-        <span>Ingat GEM-ID di perangkat ini</span>
-      </label>
-    </form>
-    <div style="margin-top:40px; text-align:center; font-size:12px; color:var(--gray-text);">
-      Belum punya GEM-ID? Hubungi Ketua RW Anda.
+  <nav class="header-nav" id="headerNav">
+    <a href="#cara-kerja" class="nav-link">Cara Kerja</a>
+    <a href="#gem" class="nav-link">Koin GEM</a>
+    <a href="#dampak" class="nav-link">Dampak</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+  </nav>
+
+  <a href="#gabung" class="header-cta" id="headerCta">🚀 Gabung</a>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<<nav class="mobile-nav" id="mobileNav">
+  <a href="#cara-kerja" onclick="closeMobileMenu()">Cara Kerja</a>
+  <a href="#gem" onclick="closeMobileMenu()">Koin GEM</a>
+  <a href="#dampak" onclick="closeMobileMenu()">Dampak</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#gabung" onclick="closeMobileMenu()" style="background: #E9F5EC; color: #1B4332;">Gabung Sekarang</a>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="beranda">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge" id="heroBadge">
+      <span class="badge-dot"></span>
+      <span id="heroBadgeText">Gerakan Lingkungan #1 di Indonesia</span>
     </div>
-  </div>
 
-  <!-- Dashboard -->
-  <div id="dashboard" class="dashboard" style="display:none;">
-    <div class="container">
-      <div class="status-bar">
-        <span id="clock">9:41</span>
-        <span>🔋📶</span>
+    <div class="hero-mascot" id="heroMascot">
+      <div class="mascot-placeholder">🌿</div>
+    </div>
+
+    <div class="hero-title">
+      <h1 id="heroTitle">Gerakan Memilah <span class="highlight">Sampah</span> Dari Rumah</h1>
+      <p id="heroSubtitle">Pilah sampah dari rumah, dapat GEM, banyak manfaat! Gabung sekarang dan jadilah bagian dari perubahan untuk lingkungan yang lebih bersih.</p>
+    </div>
+
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat">
+        <div class="stat-number" data-count="15000">0</div>
+        <div class="stat-label">Anggota Aktif</div>
       </div>
-
-      <div class="dashboard-header">
-        <h1>Selamat <span id="greeting">Pagi</span>,<br><strong id="user-name">Budi!</strong></h1>
-        <span style="font-size:22px;">🔔</span>
+      <div class="hero-stat">
+        <div class="stat-number" data-count="500">0</div>
+        <div class="stat-label">Drop Point</div>
       </div>
-
-      <!-- Balance Card -->
-      <div class="balance-card">
-        <div class="balance-label">POIN GEM SAYA</div>
-        <div class="balance-amount"><span id="user-gem">0</span> <span class="balance-unit">GEM</span></div>
-        <div class="milestone-bar" id="milestone-bar">
-          <!-- Generated by JS -->
-        </div>
-        <div class="milestone-progress">
-          <div class="milestone-progress-fill" id="milestone-fill" style="width:0%"></div>
-        </div>
-      </div>
-
-      <!-- Quick Actions -->
-      <div class="quick-actions">
-        <button class="action-btn" onclick="showQR()">
-          <span class="icon">📋</span>
-          <span class="label">QR Saya</span>
-        </button>
-        <button class="action-btn" onclick="showHistory()">
-          <span class="icon">📊</span>
-          <span class="label">Riwayat</span>
-        </button>
-        <button class="action-btn" onclick="showRewards()">
-          <span class="icon">🎁</span>
-          <span class="label">Reward</span>
-        </button>
-        <button class="action-btn" onclick="showProfile()">
-          <span class="icon">👤</span>
-          <span class="label">Profil</span>
-        </button>
-      </div>
-
-      <!-- History Card -->
-      <div class="card" id="history-card">
-        <div style="font-size:16px; font-weight:700; color:var(--dark-text); margin-bottom:12px;">RIWAYAT TERAKHIR</div>
-        <div id="history-list">
-          <div class="history-item">
-            <div class="history-date">Belum ada setoran</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Profile Card (hidden by default) -->
-      <div class="card" id="profile-card" style="display:none;">
-        <div style="font-size:16px; font-weight:700; color:var(--dark-text); margin-bottom:12px;">PROFIL SAYA</div>
-        <div id="profile-content" style="font-size:14px; line-height:2;"></div>
-        <button class="btn btn-outline" onclick="logout()" style="margin-top:16px;">Keluar</button>
+      <div class="hero-stat">
+        <div class="stat-number" data-count="50">0</div>
+        <div class="stat-label">Ton Sampah</div>
       </div>
     </div>
 
-    <!-- Bottom Nav -->
-    <nav class="bottom-nav">
-      <a href="#" class="nav-item active" onclick="showTab('home')">
-        <span class="icon">🏠</span>
-        <span>Beranda</span>
+    <div class="hero-cta" id="heroCta">
+      <a href="#gabung" class="hero-btn" id="heroPrimaryCta">
+        🚀 Mulai Sekarang
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#" class="nav-item" onclick="showQR()">
-        <span class="icon">📋</span>
-        <span>QR Saya</span>
+      <a href="#cara-kerja" class="hero-btn-secondary" id="heroSecondaryCta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        Pelajari Caranya
       </a>
-      <a href="#" class="nav-item" onclick="showTab('profile')">
-        <span class="icon">👤</span>
-        <span>Saya</span>
-      </a>
-    </nav>
-  </div>
-
-  <!-- QR Fullscreen -->
-  <div id="qr-screen" class="qr-screen" style="display:none;">
-    <button class="close" onclick="hideQR()">✕</button>
-    <div style="font-size:18px; font-weight:700; margin-bottom:8px;">QR CODE SAYA</div>
-    <div style="font-size:13px; color:var(--gray-text); margin-bottom:20px;">Scan di TPS untuk setor cepat</div>
-    <div class="qr-container">
-      <div id="qrcode"></div>
-    </div>
-    <div class="qr-id" id="qr-gemid"></div>
-    <div style="margin-top:24px; text-align:center; font-size:13px; color:var(--gray-text);">
-      Tunjukkan QR ini ke petugas TPS<br>atau screenshot untuk dicetak
-    </div>
-    <div style="margin-top:32px; text-align:center;">
-      <div id="qr-userinfo" style="font-size:16px; font-weight:600;"></div>
-      <div id="qr-rwrt" style="font-size:13px; color:var(--primary-light); margin-top:4px;"></div>
     </div>
   </div>
 
-  <!-- Toast -->
-  <div id="toast" class="toast"></div>
+  <div class="scroll-indicator">
+    <div class="mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+<!-- ============================================
+     STEPS
+     ============================================ -->
+<section class="steps-section" id="cara-kerja">
+  <div class="steps-header animate-on-scroll">
+    <div class="section-tag">📋 Panduan</div>
+    <h2 id="stepsTitle">Cara Kerja GEMPAR</h2>
+    <p id="stepsSubtitle">4 langkah mudah untuk memilah sampah dan mendapatkan reward</p>
+  </div>
 
-  <!-- ===== DUAL FAB FLOATING BUTTONS ===== -->
-  <div class="fab-container" id="fab-container">
-    <!-- Left FAB: Chat Si Gempar -->
-    <a href="https://gempar212.base44.app" 
-       class="fab-btn fab-left animate-in" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       onclick="createRipple(event, this)"
-       aria-label="Chat Si Gempar">
-      <span>💬</span>
-      <span class="fab-badge">1</span>
-      <span class="fab-label">Chat Si Gempar</span>
+  <div class="steps-container" id="stepsContainer">
+    <div class="step-item animate-on-scroll delay-100">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Pilah Sampah</h3>
+        <p>Pilah sampah sesuai jenisnya dari rumahmu. Organik, anorganik, dan residu dipisahkan dengan rapi.</p>
+      </div>
+      <div class="step-icon">♻️</div>
+    </div>
+
+    <div class="step-item animate-on-scroll delay-200">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Bawa ke Drop Point</h3>
+        <p>Bawa sampah yang sudah dipilah ke drop point terdekat di wilayahmu. Cari lokasi via aplikasi.</p>
+      </div>
+      <div class="step-icon">📍</div>
+    </div>
+
+    <div class="step-item animate-on-scroll delay-300">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Tunjukkan QR</h3>
+        <p>Tunjukkan QR Setor ke Petugas Drop Point (PDP). Scan cepat, tidak perlu antri lama.</p>
+      </div>
+      <div class="step-icon">📱</div>
+    </div>
+
+    <div class="step-item animate-on-scroll delay-400">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>Dapatkan GEM</h3>
+        <p>Koin GEM otomatis masuk ke saldomu! Tukarkan dengan reward menarik kapan saja.</p>
+      </div>
+      <div class="step-icon">💎</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     GEM INFO
+     ============================================ -->
+<section class="gem-section" id="gem">
+  <div class="gem-card animate-on-scroll">
+    <div class="gem-card-icon">💎</div>
+    <div class="gem-card-text">
+      <h3 id="gemTitle">Apa itu Koin GEM?</h3>
+      <p id="gemDesc">GEM adalah koin kebaikan yang didapat dari setiap setoran sampah. Semakin rajin memilah, semakin banyak GEM yang terkumpul untuk ditukar dengan berbagai reward menarik.</p>
+      <div class="gem-features" id="gemFeatures">
+        <span class="gem-feature">🎁 Reward</span>
+        <span class="gem-feature">🏆 Badge</span>
+        <span class="gem-feature">📊 Leaderboard</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     IMPACT
+     ============================================ -->
+<section class="impact-section" id="dampak">
+  <div class="impact-header animate-on-scroll">
+    <div class="section-tag">🌍 Dampak</div>
+    <h2 id="impactTitle">Dampak Positif Kita</h2>
+    <p id="impactSubtitle">Setiap setoran sampah berarti satu langkah untuk bumi yang lebih baik</p>
+  </div>
+
+  <div class="impact-grid" id="impactGrid">
+    <div class="impact-card animate-on-scroll delay-100">
+      <span class="impact-icon">🌳</span>
+      <div class="impact-number" data-count="2500">0<span>+</span></div>
+      <div class="impact-label">Pohon Terselamatkan</div>
+    </div>
+    <div class="impact-card animate-on-scroll delay-200">
+      <span class="impact-icon">💧</span>
+      <div class="impact-number" data-count="10000">0<span>+</span></div>
+      <div class="impact-label">Liter Air Terjaga</div>
+    </div>
+    <div class="impact-card animate-on-scroll delay-300">
+      <span class="impact-icon">⚡</span>
+      <div class="impact-number" data-count="5000">0<span>+</span></div>
+      <div class="impact-label">kWh Energi Hemat</div>
+    </div>
+    <div class="impact-card animate-on-scroll delay-400">
+      <span class="impact-icon">👥</span>
+      <div class="impact-number" data-count="15000">0<span>+</span></div>
+      <div class="impact-label">Masyarakat Terlibat</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     POSTER
+     ============================================ -->
+<section class="poster-section" id="poster">
+  <div class="poster-header animate-on-scroll">
+    <div class="section-tag">📢 Kampanye</div>
+    <h2 id="posterTitle">Poster GEMPAR</h2>
+    <p id="posterSubtitle">Sebarkan semangat memilah sampah ke seluruh komunitas</p>
+  </div>
+  <div class="poster-container animate-on-scroll delay-200" id="posterContainer">
+    <div class="poster-placeholder">
+      <div class="icon">📋</div>
+      <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Poster GEMPAR</h3>
+      <p style="color:rgba(255,255,255,0.7);font-size:14px;">Upload poster.png ke GitHub untuk tampil di sini</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS
+     ============================================ -->
+<section class="testimonials-section" id="testimoni">
+  <div class="testimonials-header animate-on-scroll">
+    <div class="section-tag">💬 Testimoni</div>
+    <h2 id="testimonialsTitle">Apa Kata Mereka?</h2>
+    <p id="testimonialsSubtitle">Pengalaman nyata dari anggota GEMPAR</p>
+  </div>
+
+  <div class="testimonials-grid" id="testimonialsGrid">
+    <div class="testimonial-card animate-on-scroll delay-100">
+      <p class="testimonial-text">"GEMPAR mengubah cara pandang saya tentang sampah. Sekarang memilah jadi kebiasaan sehari-hari dan saya dapat reward juga!"</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👩</div>
+        <div class="testimonial-info">
+          <h4>Sari Dewi</h4>
+          <span>Ibu Rumah Tangga, Jakarta</span>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card animate-on-scroll delay-200">
+      <p class="testimonial-text">"Anak-anak jadi lebih aware soal lingkungan berkat GEMPAR. Seru banget bisa belajar sambil dapat koin GEM!"</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👨</div>
+        <div class="testimonial-info">
+          <h4>Budi Santoso</h4>
+          <span>Guru SD, Bandung</span>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card animate-on-scroll delay-300">
+      <p class="testimonial-text">"Drop point dekat rumah, prosesnya cepat, dan aplikasinya user-friendly. GEMPAR benar-benar solusi sampah modern!"</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👩‍💼</div>
+        <div class="testimonial-info">
+          <h4>Rina Kusuma</h4>
+          <span>Mahasiswa, Surabaya</span>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA
+     ============================================ -->
+<section class="cta-section" id="gabung">
+  <div class="cta-blob"></div>
+  <div class="cta-content">
+    <div class="cta-mascot" id="ctaMascot">
+      <div class="mascot-placeholder cta">🎉</div>
+    </div>
+    <h2 id="ctaTitle">Siap Bergabung?</h2>
+    <p id="ctaDesc">Jadilah bagian dari gerakan memilah sampah dari rumah. Bersama-sama kita bisa menciptakan lingkungan yang lebih bersih dan berkelanjutan untuk generasi mendatang.</p>
+    <a href="#" class="cta-button" id="ctaBtn" target="_blank" rel="noopener">
+      <span>🌟</span>
+      <span id="ctaBtnLabel">Gabung Sekarang</span>
     </a>
+  </div>
+</section>
 
-    <!-- Right FAB: Aplikasi Gempar -->
-    <a href="https://gemparwarakas-v2.base44.app" 
-       class="fab-btn fab-right animate-in" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       onclick="createRipple(event, this)"
-       aria-label="Aplikasi Gempar"
-       style="animation-delay: 0.15s;">
-      <span>♻️</span>
-      <span class="fab-label">Aplikasi Gempar</span>
-    </a>
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="faq-section" id="faq">
+  <div class="faq-header animate-on-scroll">
+    <div class="section-tag">❓ FAQ</div>
+    <h2 id="faqTitle">Pertanyaan Umum</h2>
+    <p id="faqSubtitle">Temukan jawaban untuk pertanyaan yang sering ditanyakan</p>
   </div>
 
-  <script>
-    // Ripple effect for FAB buttons
-    function createRipple(e, btn) {
-      const ripple = document.createElement('span');
-      ripple.classList.add('fab-ripple');
-      const rect = btn.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      ripple.style.width = ripple.style.height = size + 'px';
-      ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
-      ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
-      btn.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
+  <div class="faq-container" id="faqContainer">
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Apakah GEMPAR gratis?</span>
+        <div class="faq-icon">▼</div>
+      </div>
+      <div class="faq-answer">
+        <p>Ya, bergabung dengan GEMPAR sepenuhnya gratis! Kamu bahkan bisa mendapatkan koin GEM dari setiap setoran sampah yang bisa ditukar dengan reward menarik.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Bagaimana cara menukar koin GEM?</span>
+        <div class="faq-icon">▼</div>
+      </div>
+      <div class="faq-answer">
+        <p>Koin GEM bisa ditukar melalui aplikasi GEMPAR. Pilih reward yang tersedia, konfirmasi penukaran, dan tunjukkan kode voucher ke merchant partner.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Di mana saja drop point GEMPAR?</span>
+        <div class="faq-icon">▼</div>
+      </div>
+      <div class="faq-answer">
+        <p>Drop point GEMPAR tersebar di berbagai kota besar seperti Jakarta, Bandung, Surabaya, dan Yogyakarta. Cek lokasi terdekat via aplikasi GEMPAR.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Apa saja jenis sampah yang diterima?</span>
+        <div class="faq-icon">▼</div>
+      </div>
+      <div class="faq-answer">
+        <p>GEMPAR menerima sampah organik, anorganik (plastik, kaca, logam), dan residu. Pastikan sampah sudah dibersihkan dan dipilah sesuai jenisnya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <span style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:28px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));">🌿</span>
+      <span id="footerLogoText">GEMPAR</span>
+    </div>
+    <div class="footer-links" id="footerLinks">
+      <a href="#beranda">Beranda</a>
+      <a href="#cara-kerja">Cara Kerja</a>
+      <a href="#dampak">Dampak</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-social" id="footerSocial">
+      <a href="#" title="Instagram">📷</a>
+      <a href="#" title="Twitter">🐦</a>
+      <a href="#" title="Facebook">📘</a>
+      <a href="#" title="YouTube">▶️</a>
+    </div>
+    <div class="footer-divider"></div>
+    <p id="footerCopy">Gerakan Memilah Sampah Dari Rumah</p>
+    <p class="footer-slogan" id="footerSlogan">Pilah Sampah, Dapat GEM, Banyak Manfaat!</p>
+  </div>
+</footer>
+
+<!-- ============================================
+     FAB BLOCK — Komponen Kustom (2 Tombol)
+     ============================================ -->
+<div class="fab-block-container" id="fabBlockContainer" data-position="right-bottom"></div>
+
+<!-- ============================================
+     PWA INSTALL BANNER
+     ============================================ -->
+<div class="pwa-banner" id="pwaBanner">
+  <div class="pwa-banner-icon">🌿</div>
+  <div class="pwa-banner-text">
+    <h4>Install GEMPAR App</h4>
+    <p>Tambahkan ke layar utama untuk akses cepat</p>
+  </div>
+  <button class="pwa-banner-btn" id="pwaInstallBtn">Install</button>
+  <button class="pwa-banner-close" id="pwaCloseBtn">×</button>
+</div>
+
+<!-- ============================================
+     SCROLL TO TOP
+     ============================================ -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- ============================================
+     TOAST
+     ============================================ -->
+<div class="toast" id="toast">
+  <span class="toast-icon">✨</span>
+  <span id="toastText">Fitur segera hadir!</span>
+</div>
+
+<!-- ============================================
+     CONFIG LOADER
+     ============================================ -->
+<script>
+(function() {
+  'use strict';
+  
+  // ============================================
+  // CONFIG SOURCES — Skyfound212 / Gempar-new
+  // ============================================
+  const CONFIG_SOURCES = [
+    'https://Skyfound212.github.io/Gempar-new/config/main.js',
+    '/fallback/config.js'
+  ];
+  
+  const THEME_CSS = 'https://Skyfound212.github.io/Gempar-new/theme/variables.css';
+  
+  // ============================================
+  // EMERGENCY CONFIG (Minimal fallback)
+  // ============================================
+  const EMERGENCY_CONFIG = {
+    version: 'emergency',
+    features: { fab_block: true, cta: true },
+    fab_block: {
+      enabled: true,
+      position: 'right-bottom',
+      style: 'pill',
+      buttons: [
+        { id: 'chat', label: 'Chat Si Gempar', icon: '💬', href: 'https://gempar212.base44.app', target: '_blank', theme: 'primary', pulse: true, order: 1 },
+        { id: 'app', label: 'Aplikasi Gempar', icon: '🚀', href: 'https://gemparwarakas-v2.base44.app', target: '_blank', theme: 'accent', pulse: false, order: 2 }
+      ]
+    },
+    cta: {
+      button: { href: 'https://gemparwarakas-v2.base44.app/openformdaftar', label: '🌟 Gabung Sekarang', target: '_blank' }
     }
-
-    // Staggered entrance animation
-    document.addEventListener('DOMContentLoaded', function() {
-      const fabs = document.querySelectorAll('.fab-btn');
-      fabs.forEach((fab, index) => {
-        fab.style.opacity = '0';
-        fab.style.transform = 'scale(0)';
-        setTimeout(() => {
-          fab.style.opacity = '1';
-          fab.style.transform = 'scale(1)';
-        }, 800 + (index * 200));
+  };
+  
+  // ============================================
+  // LOAD EXTERNAL SCRIPT
+  // ============================================
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src + '?v=' + Date.now();
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Failed: ' + src));
+      document.head.appendChild(script);
+    });
+  }
+  
+  // ============================================
+  // LOAD THEME CSS
+  // ============================================
+  function loadThemeCSS() {
+    const link = document.getElementById('themeVariables');
+    if (link) link.href = THEME_CSS + '?v=' + Date.now();
+  }
+  
+  // ============================================
+  // RENDER FAB BLOCK
+  // ============================================
+  function renderFabBlock(config) {
+    const container = document.getElementById('fabBlockContainer');
+    if (!container || !config?.fab_block?.enabled) return;
+    
+    const { position, buttons } = config.fab_block;
+    container.setAttribute('data-position', position || 'right-bottom');
+    
+    const sorted = [...buttons].sort((a, b) => (a.order || 0) - (b.order || 0));
+    
+    container.innerHTML = sorted.map(btn => `
+      <a href="${btn.href}" 
+         class="fab-block fab-block--${btn.theme || 'primary'}" 
+         target="${btn.target || '_blank'}" 
+         rel="noopener"
+         data-pulse="${btn.pulse ? 'true' : 'false'}">
+        <span class="fab-block__pulse"></span>
+        <span class="fab-block__icon">${btn.icon}</span>
+        <span class="fab-block__label">${btn.label}</span>
+      </a>
+    `).join('');
+  }
+  
+  // ============================================
+  // RENDER CTA BUTTON
+  // ============================================
+  function renderCTA(config) {
+    const btn = document.getElementById('ctaBtn');
+    const label = document.getElementById('ctaBtnLabel');
+    if (!btn || !config?.cta?.button) return;
+    
+    const { href, label: text, target } = config.cta.button;
+    btn.href = href;
+    btn.target = target || '_blank';
+    btn.rel = 'noopener';
+    if (label) label.textContent = text;
+    btn.onclick = null;
+  }
+  
+  // ============================================
+  // RENDER PRELOADER
+  // ============================================
+  function renderPreloader(config) {
+    const p = config?.preloader;
+    if (!p) return;
+    
+    const preloader = document.getElementById('preloader');
+    const text = document.getElementById('preloaderText');
+    const version = document.getElementById('preloaderVersion');
+    
+    if (p.image && !p.image.includes('Skyfound212')) {
+      preloader.style.background = `url("${p.image}") center center / cover no-repeat`;
+    }
+    if (text) text.textContent = p.loading_text || 'Memuat...';
+    if (version) version.textContent = p.version_text || '';
+  }
+  
+  // ============================================
+  // RENDER HEADER
+  // ============================================
+  function renderHeader(config) {
+    const h = config?.header;
+    if (!h) return;
+    
+    const logoText = document.getElementById('headerLogoText');
+    const cta = document.getElementById('headerCta');
+    
+    if (logoText) logoText.textContent = h.logo_text || 'GEMPAR';
+    if (cta && h.cta_button) {
+      cta.href = h.cta_button.href;
+      cta.textContent = h.cta_button.label;
+    }
+  }
+  
+  // ============================================
+  // RENDER HERO
+  // ============================================
+  function renderHero(config) {
+    const h = config?.hero;
+    if (!h) return;
+    
+    const badgeText = document.getElementById('heroBadgeText');
+    const title = document.getElementById('heroTitle');
+    const subtitle = document.getElementById('heroSubtitle');
+    const primaryCta = document.getElementById('heroPrimaryCta');
+    const secondaryCta = document.getElementById('heroSecondaryCta');
+    
+    if (badgeText && h.badge?.enabled) badgeText.textContent = h.badge.text;
+    if (title) title.innerHTML = h.title || '';
+    if (subtitle) subtitle.textContent = h.subtitle || '';
+    if (primaryCta && h.primary_cta) {
+      primaryCta.href = h.primary_cta.href;
+      primaryCta.innerHTML = `${h.primary_cta.label} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+    }
+    if (secondaryCta && h.secondary_cta) {
+      secondaryCta.href = h.secondary_cta.href;
+      secondaryCta.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> ${h.secondary_cta.label}`;
+    }
+  }
+  
+  // ============================================
+  // RENDER SECTIONS
+  // ============================================
+  function renderSections(config) {
+    const s = config?.data?.sections;
+    if (!s) return;
+    
+    const sections = {
+      'cara-kerja': s.steps,
+      'gem': s.gem,
+      'dampak': s.impact,
+      'poster': s.poster,
+      'testimoni': s.testimonials,
+      'gabung': s.cta,
+      'faq': s.faq
+    };
+    
+    Object.entries(sections).forEach(([id, enabled]) => {
+      if (!enabled) {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      }
+    });
+  }
+  
+  // ============================================
+  // RENDER FOOTER
+  // ============================================
+  function renderFooter(config) {
+    const f = config?.footer;
+    if (!f) return;
+    
+    const logoText = document.getElementById('footerLogoText');
+    const copy = document.getElementById('footerCopy');
+    const slogan = document.getElementById('footerSlogan');
+    
+    if (logoText) logoText.textContent = f.logo_text || 'GEMPAR';
+    if (copy) copy.textContent = f.copyright || 'Gerakan Memilah Sampah Dari Rumah';
+    if (slogan) slogan.textContent = f.slogan || 'Pilah Sampah, Dapat GEM, Banyak Manfaat!';
+  }
+  
+  // ============================================
+  // INIT ALL
+  // ============================================
+  function init(config) {
+    console.log('[GEMPAR] Config loaded:', config.version || 'unknown');
+    
+    renderPreloader(config);
+    renderHeader(config);
+    renderHero(config);
+    renderSections(config);
+    renderFabBlock(config);
+    renderCTA(config);
+    renderFooter(config);
+    
+    initInteractions();
+    initPreloader(config);
+  }
+  
+  // ============================================
+  // PRELOADER LOGIC
+  // ============================================
+  function initPreloader(config) {
+    const p = config?.preloader;
+    if (!p || !p.enabled) {
+      skipPreloader();
+      return;
+    }
+    
+    const duration = p.duration_ms || 3000;
+    const showSkip = p.show_skip_after_ms || 3000;
+    
+    setTimeout(() => {
+      const skip = document.getElementById('preloaderSkip');
+      if (skip) skip.classList.add('visible');
+    }, showSkip);
+    
+    setTimeout(() => {
+      skipPreloader();
+    }, duration);
+  }
+  
+  window.skipPreloader = function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.classList.add('hidden');
+      setTimeout(() => preloader.remove(), 800);
+    }
+  };
+  
+  // ============================================
+  // INTERACTIONS
+  // ============================================
+  function initInteractions() {
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn?.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileNav?.classList.toggle('open');
+    });
+    
+    window.closeMobileMenu = function() {
+      menuBtn?.classList.remove('active');
+      mobileNav?.classList.remove('open');
+    };
+    
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') {
+          e.preventDefault();
+          showToast('Fitur segera hadir!');
+          return;
+        }
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - 64, behavior: 'smooth' });
+          closeMobileMenu();
+        }
       });
     });
-  </script>
-
-
-  <!-- Splash Auto-Hide -->
-  <script>
-    (function() {
-      const splash = document.getElementById('splash');
-      if (splash) {
-        setTimeout(function() {
-          splash.classList.add('fade-out');
-          setTimeout(function() {
-            splash.style.display = 'none';
-          }, 600);
-        }, 4000);
+    
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+      });
+      navLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+      });
+    });
+    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    
+    document.querySelectorAll('.animate-on-scroll, .step-item, .impact-card, .testimonial-card').forEach(el => {
+      observer.observe(el);
+    });
+    
+    let countersAnimated = false;
+    const heroObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !countersAnimated) {
+          countersAnimated = true;
+          document.querySelectorAll('.stat-number').forEach(c => {
+            const target = parseInt(c.dataset.count);
+            let start = 0;
+            const duration = 2000;
+            const inc = target / (duration / 16);
+            function update() {
+              start += inc;
+              if (start < target) {
+                c.textContent = Math.floor(start);
+                requestAnimationFrame(update);
+              } else {
+                c.textContent = target;
+              }
+            }
+            update();
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    const hero = document.querySelector('.hero');
+    if (hero) heroObserver.observe(hero);
+    
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question')?.addEventListener('click', () => {
+        const active = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!active) item.classList.add('active');
+      });
+    });
+    
+    const scrollTop = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTop?.classList.toggle('visible', window.scrollY > 500);
+    });
+    scrollTop?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    const pwaBanner = document.getElementById('pwaBanner');
+    const pwaClose = document.getElementById('pwaCloseBtn');
+    const pwaInstall = document.getElementById('pwaInstallBtn');
+    
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      setTimeout(() => pwaBanner?.classList.add('show'), 3000);
+    });
+    
+    pwaClose?.addEventListener('click', () => {
+      pwaBanner?.classList.remove('show');
+    });
+    
+    pwaInstall?.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        pwaBanner?.classList.remove('show');
       }
-    })();
-  </script>
+      deferredPrompt = null;
+    });
+  }
+  
+  // ============================================
+  // TOAST
+  // ============================================
+  let toastTimeout;
+  window.showToast = function(msg) {
+    const toast = document.getElementById('toast');
+    const text = document.getElementById('toastText');
+    if (text) text.textContent = msg;
+    toast?.classList.add('show');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast?.classList.remove('show'), 3000);
+  };
+  
+  // ============================================
+  // SERVICE WORKER
+  // ============================================
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(r => console.log('[GEMPAR] SW registered'))
+      .catch(e => console.log('[GEMPAR] SW failed:', e));
+  }
+  
+  // ============================================
+  // ONLINE/OFFLINE
+  // ============================================
+  window.addEventListener('online', () => showToast('🌐 Online'));
+  window.addEventListener('offline', () => showToast('📡 Offline mode'));
+  
+  // ============================================
+  // LOAD CONFIG
+  // ============================================
+  async function loadConfig() {
+    loadThemeCSS();
+    
+    for (const src of CONFIG_SOURCES) {
+      try {
+        await loadScript(src);
+        if (window.GEMPAR_CONFIG) {
+          init(window.GEMPAR_CONFIG);
+          return;
+        }
+      } catch (err) {
+        console.warn('[GEMPAR] Config source failed:', src);
+      }
+    }
+    
+    console.warn('[GEMPAR] Using emergency config');
+    init(EMERGENCY_CONFIG);
+  }
+  
+  // ============================================
+  // START
+  // ============================================
+  loadConfig();
+  
+  console.log('%c🌿 GEMPAR Cloudflare', 'font-size:20px;font-weight:800;color:#2D6A4F;');
+  
+})();
+</script>
 
 </body>
 </html>
