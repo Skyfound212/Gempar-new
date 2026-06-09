@@ -34,8 +34,8 @@
 <title>GEMPAR - Gerakan Memilah Sampah Dari Rumah</title>
 
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232D6A4F' width='100' height='100' rx='20'/><text x='50' y='65' text-anchor='middle' font-size='55'>🌿</text></svg>">
+<link rel="icon" href="assets/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 
 <!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,16 +45,28 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Theme CSS dari GitHub Pages -->
-<link rel="stylesheet" href="https://Skyfound212.github.io/Gempar-new/theme/variables.css" id="themeVariables">
+<!-- Critical CSS Inline -->
+<style>
+:root {
+  --primary: #2D6A4F;
+  --primary-dark: #1B4332;
+  --accent: #D4A574;
+  --bg: #F5F7F6;
+  --text: #1A1A1A;
+  --white: #ffffff;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+</style>
+
+<!-- Theme CSS dari GitHub Pages dengan Fallback -->
+<link rel="stylesheet" href="https://Skyfound212.github.io/Gempar-new/theme/variables.css" id="themeVariables" onerror="this.href='theme/variables.css'">
 
 <style>
 /* ============================================
    CORE CSS (Minimal — sebelum theme load)
    ============================================ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F5F7F6; color: #1A1A1A; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
 /* ============================================
    PRELOADER
