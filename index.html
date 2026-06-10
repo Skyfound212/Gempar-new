@@ -424,24 +424,7 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.splash-bg.show {
   opacity: 0.4;
-}
-
-.splash-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 30%, var(--g-bg-deep) 100%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.splash-overlay.show {
-  opacity: 1;
 }
 
 /* ---- HEADER ---- */
@@ -920,13 +903,6 @@ body {
   margin: 0 auto 40px;
   line-height: 1.7;
 }
-
-/* Hero Stats - Gaming Style */
-.hero-stats {
-  display: none;
-}
-
-/* Hero Stats dihapus sesuai revisi - CSS disembunyikan */
 
 /* Hero CTA Buttons */
 .hero-cta {
@@ -2479,28 +2455,6 @@ body {
   transform: translateY(0) scale(1);
 }
 
-/* Impact Cards Animation */
-.impact-card.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.impact-card.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Testimonial Cards Animation */
-.testimonial-card.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.testimonial-card.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ============================================
    BAGIAN 17: RESPONSIVE DESIGN
    ============================================ */
@@ -2545,14 +2499,6 @@ body {
 
   .gem-card {
     padding: 32px 20px;
-  }
-
-  .impact-card {
-    padding: 28px 16px;
-  }
-
-  .testimonial-card {
-    padding: 24px;
   }
 
   .faq-question {
@@ -2886,7 +2832,6 @@ button:focus-visible {
 <!-- SPLASH SCREEN -->
 <div id="splash-screen">
   <img src="assets/images/bg-splash.png" alt="GEMPAR" class="splash-bg" id="splashBg">
-  <div class="splash-overlay" id="splashOverlay"></div>
 </div>
 
 <!-- HEADER -->
@@ -2937,8 +2882,7 @@ button:focus-visible {
       <h1 id="heroTitle">Gerakan Memilah <span class="highlight">Sampah</span> Dari Rumah</h1>
       <p id="heroSubtitle">Pilah sampah dari rumah, dapat GEM, banyak manfaat! Gabung sekarang dan jadilah bagian dari perubahan untuk lingkungan yang lebih bersih.</p>
     </div>
-    <!-- Hero Stats dihapus sesuai revisi -->
-    <div class="hero-stats" id="heroStats" style="display:none;"></div>
+
     <div class="hero-cta" id="heroCta">
       <a href="#gabung" class="hero-btn" id="heroPrimaryCta">🚀 Mulai Sekarang <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <a href="#cara-kerja" class="hero-btn-secondary" id="heroSecondaryCta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Pelajari Caranya</a>
@@ -3091,24 +3035,9 @@ button:focus-visible {
    ============================================ */
 function initSplashScreen(){
   const splash = document.getElementById('splash-screen');
-  const bg = document.getElementById('splashBg');
-  const overlay = document.getElementById('splashOverlay');
-
-  // Fase 2 langsung: tampilkan bg + overlay
-  bg.classList.add('show');
-  overlay.classList.add('show');
-
-  // Total 4 detik lalu fade out splash
   setTimeout(() => {
     splash.classList.add('fade-out');
-    setTimeout(() => {
-      splash.classList.add('hidden');
-      if (splash.parentNode) {
-        splash.style.display = 'none';
-        splash.parentNode.removeChild(splash);
-      }
-      initApp();
-    }, 800);
+    setTimeout(() => { splash.remove(); initApp(); }, 800);
   }, 4000);
 }
 
@@ -3327,23 +3256,6 @@ function initInteractions() {
   }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.animate-on-scroll, .step-item, .impact-card, .testimonial-card').forEach(el => observer.observe(el));
-
-  // Counter animation
-  let countersAnimated = false;
-  const heroObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !countersAnimated) {
-        countersAnimated = true;
-        // Hero stat counters - REMOVED (stats dihapus)
-        // Impact counters - REMOVED (section dihapus)
-      }
-    });
-  }, { threshold: 0.3 });
-
-  const hero = document.querySelector('.hero');
-  if (hero) heroObserver.observe(hero);
-  const impactSection = document.querySelector('.impact-section');
-  if (impactSection) heroObserver.observe(impactSection);
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
