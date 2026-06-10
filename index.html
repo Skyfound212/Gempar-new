@@ -417,23 +417,6 @@ body {
   display: none;
 }
 
-.splash-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 70vw;
-  max-height: 35vh;
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  filter: drop-shadow(0 0 30px var(--g-primary-glow));
-}
-
-.splash-logo.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
 .splash-bg {
   position: absolute;
   inset: 0;
@@ -459,72 +442,6 @@ body {
 
 .splash-overlay.show {
   opacity: 1;
-}
-
-.splash-loader {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(400px, 80vw);
-  height: auto;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.splash-loader.show {
-  opacity: 1;
-}
-
-.splash-loader-track {
-  width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-}
-
-.splash-loader-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--g-primary), var(--g-secondary), var(--g-accent));
-  border-radius: 2px;
-  animation: loaderFill 3s ease-in-out forwards;
-  box-shadow: 0 0 20px var(--g-primary-glow), 0 0 40px var(--g-secondary-glow);
-  position: relative;
-}
-
-.splash-loader-fill::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: var(--g-primary);
-  border-radius: 50%;
-  box-shadow: 0 0 15px var(--g-primary-glow), 0 0 30px var(--g-secondary-glow);
-}
-
-.splash-loader-text {
-  color: var(--g-text-secondary);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-family: var(--font-gaming);
-}
-
-.splash-loader-text span {
-  color: var(--g-primary);
-  text-shadow: 0 0 10px var(--g-primary-glow);
 }
 
 /* ---- HEADER ---- */
@@ -2961,19 +2878,15 @@ button:focus-visible {
 
 </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 
 <body>
 
 <!-- SPLASH SCREEN -->
 <div id="splash-screen">
-  <img src="assets/images/logo-splash.png" alt="Digi-Warakas" class="splash-logo" id="splashLogo">
   <img src="assets/images/bg-splash.png" alt="GEMPAR" class="splash-bg" id="splashBg">
   <div class="splash-overlay" id="splashOverlay"></div>
-  <div class="splash-loader" id="splashLoader">
-    <div class="splash-loader-track"><div class="splash-loader-fill"></div></div>
-    <div class="splash-loader-text">Memuat <span>aplikasi...</span></div>
-  </div>
 </div>
 
 <!-- HEADER -->
@@ -3178,33 +3091,25 @@ button:focus-visible {
    ============================================ */
 function initSplashScreen(){
   const splash = document.getElementById('splash-screen');
-  const logo = document.getElementById('splashLogo');
   const bg = document.getElementById('splashBg');
   const overlay = document.getElementById('splashOverlay');
-  const loader = document.getElementById('splashLoader');
 
-  setTimeout(() => logo.classList.add('show'), 100);
-  setTimeout(() => { bg.classList.add('show'); overlay.classList.add('show'); loader.classList.add('show'); }, 2000);
+  // Fase 2 langsung: tampilkan bg + overlay
+  bg.classList.add('show');
+  overlay.classList.add('show');
+
+  // Total 4 detik lalu fade out splash
   setTimeout(() => {
-    // Fade out splash 1 (logo) - sembunyikan semua elemen splash 1
-    logo.style.opacity = '0';
-    logo.style.visibility = 'hidden';
-    loader.style.opacity = '0';
-    loader.style.visibility = 'hidden';
-    overlay.style.opacity = '0';
-    // Splash 2 (bg-splash.png) sudah tampil sebagai background
-    // Setelah fade selesai, hapus splash dari DOM
     splash.classList.add('fade-out');
     setTimeout(() => {
       splash.classList.add('hidden');
-      // Hapus dari DOM untuk memastikan tidak ada elemen tersisa
       if (splash.parentNode) {
         splash.style.display = 'none';
         splash.parentNode.removeChild(splash);
       }
       initApp();
     }, 800);
-  }, 5000);
+  }, 4000);
 }
 
 /* ============================================
